@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpaceLab — Science Factory for Physics & Space</title>
+  <meta name="description" content="SpaceLab — a modern science factory focused on physics, space science, experiments, and outreach." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070617;
+      --card:#0f1224;
+      --muted:#9aa0c4;
+      --accent:#7dd3fc;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#030312 0%, #07102a 60%, #050712 100%);color:#e7eefb}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+
+    header{position:sticky;top:12px;z-index:40}
+    .nav{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#5eead4,#60a5fa);display:grid;place-items:center;font-weight:800;color:#021025}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--accent)}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
+    .hero-left h1{font-size:38px;margin:0 0 12px;line-height:1.02}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{background:linear-gradient(90deg,#60a5fa,#7dd3fc);border:none;padding:12px 18px;border-radius:12px;color:#021025;font-weight:700;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;backdrop-filter: blur(6px);box-shadow: 0 6px 30px rgba(2,4,23,0.6)}
+
+    .stats{display:flex;gap:12px;margin-top:14px}
+    .stat{padding:12px;border-radius:12px;background:var(--glass);min-width:110px;text-align:center}
+    .stat strong{display:block;font-size:18px}
+    .stat span{color:var(--muted);font-size:13px}
+
+    /* Right column card */
+    .card-right{height:360px;position:relative;overflow:hidden}
+    .starfield-canvas{position:absolute;inset:0}
+    .card-right .panel{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
+
+    section{margin:40px 0}
+    h2{margin:0 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .research-card{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:140px}
+    .research-card h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px;display:block}
+
+    footer{padding:32px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03)}
+
+    /* Responsive */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:640px){
+      .container{padding:18px}
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .hero-left h1{font-size:26px}
+      .card-right{height:240px}
+    }
+
+    /* small utility */
+    .small{font-size:13px;color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass-2);font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">SL</div>
+          <div>
+            <div style="font-weight:800">SpaceLab</div>
+            <div class="small">Science Factory — Physics, Space & Outreach</div>
+          </div>
+        </div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#experiments">Experiments</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <div class="card">
+            <h1>SpaceLab — a modern factory for physics & space science</h1>
+            <p class="muted">Bringing experiments, simulations, outreach and open-source tools together. Explore visualizations, citizen-science projects, and learning modules focused on astrophysics, cosmology and experimental physics.</p>
+            <div class="cta-row">
+              <button class="btn">Explore Projects</button>
+              <button class="btn secondary">Get Involved</button>
+            </div>
+            <div class="stats">
+              <div class="stat card">
+                <strong>12</strong>
+                <span>Active Projects</span>
+              </div>
+              <div class="stat card">
+                <strong>34k</strong>
+                <span>Monthly Visitors</span>
+              </div>
+              <div class="stat card">
+                <strong>8</strong>
+                <span>Open Tools</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card card-right">
+          <canvas id="starfield" class="starfield-canvas"></canvas>
+          <div class="panel" style="padding:18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <div class="pill">Live</div>
+              <div class="small">Next seminar: Oct 12, 2025 — "Exoplanet Atmospheres"</div>
+            </div>
+            <div style="background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:12px">
+              <div style="display:flex;gap:12px;align-items:center">
+                <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="white" stroke-opacity="0.12" stroke-width="1.2"/></svg>
+                <div>
+                  <div style="font-weight:700">Live Telescope Feed</div>
+                  <div class="small muted">HD feed from partner observatory (simulated)</div>
+                </div>
+              </div>
+              <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+                <button class="btn">View Feed</button>
+                <button class="btn secondary">Schedule</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about">
+        <div class="card">
+          <h2>About SpaceLab</h2>
+          <p class="muted">SpaceLab is a collaborative platform for students, hobbyists and researchers. We combine small-scale lab experiments, open data, interactive visualizations and educational content to make physics & space science approachable.</p>
+        </div>
+      </section>
+
+      <section id="research">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h2>Research & Projects</h2>
+          <div class="small muted">Latest updates • community-driven</div>
+        </div>
+        <div class="grid">
+          <div class="research-card card">
+            <h3>Exoplanet Atmospheres</h3>
+            <p class="muted">Spectral analysis pipeline for transit observations. Tools, tutorials and sample datasets to extract atmospheric signatures.</p>
+            <div class="small" style="margin-top:12px">Status: Open • 3 contributors</div>
+          </div>
+          <div class="research-card card">
+            <h3>Cosmic Ray Detector</h3>
+            <p class="muted">DIY detector plans and cloud-collated data from citizen scientists. Learn how to build and analyze detections.</p>
+            <div class="small" style="margin-top:12px">Status: Prototype • 6 contributors</div>
+          </div>
+          <div class="research-card card">
+            <h3>Simulated Gravity Lab</h3>
+            <p class="muted">Interactive sandbox for orbits, tides and gravity experiments with adjustable parameters and visualization tools.</p>
+            <div class="small" style="margin-top:12px">Status: Beta • Modules: Orbital Mechanics</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiments">
+        <h2>Experiments & Learning</h2>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:260px">
+            <h3>Beginner: Build a Cloud Chamber</h3>
+            <p class="muted">Step-by-step guide to observe particle tracks at home using safe, low-cost materials.</p>
+            <div style="margin-top:12px"><button class="btn">Read Guide</button></div>
+          </div>
+          <div class="card" style="flex:1;min-width:260px">
+            <h3>Intermediate: Radio Telescope Receiver</h3>
+            <p class="muted">Assemble a small radio receiver to detect hydrogen line signals; includes code and analysis notebooks.</p>
+            <div style="margin-top:12px"><button class="btn">Download Plans</button></div>
+          </div>
+          <div class="card" style="flex:1;min-width:260px">
+            <h3>Advanced: Particle Tracking with ML</h3>
+            <p class="muted">Use computer vision to analyze lab footage and track particle trajectories. Example notebooks included.</p>
+            <div style="margin-top:12px"><button class="btn">Open Notebook</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Gallery & Demos</h2>
+        <div class="gallery card" style="padding:12px">
+          <!-- placeholder SVG images to avoid external dependencies -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%2307102a'/><text x='50%' y='50%' fill='%23cfe8ff' font-family='Inter' font-size='20' dominant-baseline='middle' text-anchor='middle'>Telescope View</text></svg>" alt="Telescope View">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23071a2a'/><text x='50%' y='50%' fill='%23cfe8ff' font-family='Inter' font-size='20' dominant-baseline='middle' text-anchor='middle'>Cloud Chamber</text></svg>" alt="Cloud Chamber">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23010a12'/><text x='50%' y='50%' fill='%23cfe8ff' font-family='Inter' font-size='20' dominant-baseline='middle' text-anchor='middle'>Simulation</text></svg>" alt="Simulation">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23041b28'/><text x='50%' y='50%' fill='%23cfe8ff' font-family='Inter' font-size='20' dominant-baseline='middle' text-anchor='middle'>Detector</text></svg>" alt="Detector">
+        </div>
+      </section>
+
+      <section id="contact">
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start">
+          <div class="card">
+            <h2>Join our community</h2>
+            <p class="muted">Want to contribute a project, host a seminar, or get access to datasets? Reach out or sign up for our newsletter.</p>
+            <form onsubmit="event.preventDefault();alert('Thanks — this is a demo form. Connect a backend to collect submissions.');" style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+              <input type="text" name="name" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+              <input type="email" name="email" placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+              <textarea name="message" placeholder="How do you want to help?" rows="4" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+              <div style="display:flex;gap:8px">
+                <button class="btn" type="submit">Send</button>
+                <button class="btn secondary" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="card" style="height:100%">
+            <h3>Contact</h3>
+            <div class="small muted">Email: hello@spacelab.example</div>
+            <div class="small muted">Location: Global — distributed contributors</div>
+            <div style="margin-top:12px">
+              <div class="small">Follow us</div>
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <div class="pill">Twitter</div>
+                <div class="pill">GitHub</div>
+                <div class="pill">YouTube</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="small">© SpaceLab — Science Factory • 2025</div>
+        <div class="small muted">Built with curiosity • License: MIT</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple starfield canvas
+    (function(){
+      const canvas = document.getElementById('starfield');
+      const ctx = canvas.getContext('2d');
+      let w, h, stars = [];
+      function init(){
+        resize();
+        stars = [];
+        const num = Math.floor((w*h)/9000);
+        for(let i=0;i<num;i++) stars.push({x:Math.random()*w,y:Math.random()*h,z:Math.random()*1,vel:0.02+Math.random()*0.3});
+        render();
+      }
+      function resize(){
+        const rect = canvas.getBoundingClientRect();
+        w = canvas.width = rect.width;
+        h = canvas.height = rect.height;
+      }
+      function render(){
+        ctx.clearRect(0,0,w,h);
+        // subtle gradient
+        const g = ctx.createLinearGradient(0,0,0,h);
+        g.addColorStop(0,'rgba(96,165,250,0.06)');
+        g.addColorStop(1,'rgba(7,16,34,0.02)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0,0,w,h);
+        for(let s of stars){
+          s.x -= s.vel*2;
+          s.y += Math.sin((s.x+s.y)/100)*0.1;
+          if(s.x< -2) s.x = w+2;
+          const r = (1+s.z*2);
+          ctx.beginPath();
+          ctx.arc(s.x,s.y,r,0,Math.PI*2);
+          ctx.fillStyle = 'rgba(173,216,230,'+(0.5+s.z*0.5)+')';
+          ctx.fill();
+        }
+        requestAnimationFrame(render);
+      }
+      window.addEventListener('resize', ()=>{resize();});
+      init();
+    })();
+  </script>
+</body>
+</html>
